@@ -109,6 +109,7 @@ export async function GET(
                 storeId: params.storeId,
                 categoryId,
                 colorId,
+                sizeId,
                 isFeatured: isFeatured ? true : undefined,
                 isArchived: false
             },
