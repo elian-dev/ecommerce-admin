@@ -1,4 +1,5 @@
-# SaaS E-commerce Admin Panel
+# SaaS E-commerce Admin Panel ![Version - 1.0.0](https://img.shields.io/badge/Version-1.0.0-2ea44f) 
+![Tech](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white) 
 
 ## Table of Contents
 - [Overview](#overview)
