@@ -76,7 +76,7 @@ npm run dev
 
 ## What I Learned
 - Javascript modern features: This project has allowed me to use modern features of JS, and understand more about how to use them and how they work. Additionally, has allowed me to use good practices and keep a clean code.
-- Use the correct library and optimize development time: One of the main goals for this project was to code a SASS platform and the frontend app optimizing the time, and thanks to keeping a good organization of the project and using different very useful libraries those goals were achieved in the end.
+- Use the correct library and optimize development time: One of the main goals for this project was to code a SaaS platform and the frontend app optimizing the time, and thanks to keeping a good organization of the project and using different very useful libraries those goals were achieved in the end.
 - Integrate a payment platform: That was something very new for me, but it is something that always wanted to learn, and this project allowed me to do it, I have learned to setup a local environment, use special tools to do testing, and about the endpoints and events when a person buys a product.
 - Validate the data, cath errors, and provide the information of any event.
 
