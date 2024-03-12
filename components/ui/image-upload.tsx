@@ -28,7 +28,6 @@ import { CldUploadWidget } from "next-cloudinary"
 
     const onUpload = (result: any) => {
         onChange(result.info.secure_url);
-        console.log('onUpload')
     };
 
     if(!isMounted) {

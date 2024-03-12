@@ -24,6 +24,12 @@ import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
     label: z.string().min(1),
+    legend: z.string().min(1),
+
+    url: z.string().min(1),
+    buttonText: z.string().min(1),
+
+    imageAlt: z.string().min(1),
     imageUrl: z.string().min(1),
 })
 
@@ -54,7 +60,11 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
         resolver: zodResolver(formSchema),
         defaultValues: initialData || {
             label: '',
-            imageUrl: ''
+            legend: '',
+            url: '',
+            buttonText: '',
+            imageAlt: '',
+            imageUrl: '',
         }
     });
 
@@ -142,6 +152,19 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                             </FormItem>
                         )}
                     />
+                    <FormField 
+                            control={form.control}
+                            name="imageAlt"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Image alternative text</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={loading} placeholder="Billboard image alt text" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
                     <div className="grid grid-cols-3 gap-8">
                         <FormField 
@@ -152,6 +175,49 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                                     <FormLabel>Label</FormLabel>
                                     <FormControl>
                                         <Input disabled={loading} placeholder="Billboard label" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField 
+                            control={form.control}
+                            name="legend"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Legend</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={loading} placeholder="Billboard legend" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-8">
+                    <FormField 
+                            control={form.control}
+                            name="buttonText"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Button text</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={loading} placeholder="Billboard button text" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    <FormField 
+                            control={form.control}
+                            name="url"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Url</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={loading} placeholder="Billboard url" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

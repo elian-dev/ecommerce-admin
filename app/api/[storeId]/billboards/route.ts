@@ -10,43 +10,67 @@ export async function POST(
     try {
         const { userId } = auth();
         const body = await req.json();
+				const { label, legend, imageUrl, imageAlt, url, buttonText } = body;
 
-        const { label, imageUrl } = body;
+				if (!userId) {
+					return new NextResponse("Unauthenticated", { status: 401 });
+				}
 
-        if(!userId) {
-            return new NextResponse("Unauthenticated", { status: 401 });
-        }
+				if (!label) {
+					return new NextResponse("Label is required", { status: 400 });
+				}
 
-        if(!label) {
-            return new NextResponse("Label is required", { status: 400 });
-        }
+				if (!legend) {
+					return new NextResponse("Legend text is required", { status: 400 });
+				}
 
-        if(!imageUrl) {
-            return new NextResponse("Image URL is required", { status: 400 });
-        }
+				if (!imageUrl) {
+					return new NextResponse("Image URL is required", { status: 400 });
+				}
 
-        if(!params.storeId) {
-            return new NextResponse("Store ID is required", { status: 400 });
-        }
+				if (!imageAlt) {
+					return new NextResponse("Image ALT text is required", {
+						status: 400,
+					});
+				}
 
-        const storeByUserId = await prismadb.store.findFirst({
-            where: {
-                id: params.storeId,
-                userId
-            }
-        })
+				if (!url) {
+					return new NextResponse("URL is required", { status: 400 });
+				}
 
-        if(!storeByUserId) {
-            return new NextResponse("Unauthorized action", { status: 403 });
-        }
+				if (!buttonText) {
+					return new NextResponse("Button text URL is required", {
+						status: 400,
+					});
+				}
 
-        const billboard = await prismadb.billboard.create({
-            data: {
-                label,
-                imageUrl,
-                storeId: params.storeId
-            }
-        });
+				if (!params.storeId) {
+					return new NextResponse("Store ID is required", { status: 400 });
+				}
+
+				const storeByUserId = await prismadb.store.findFirst({
+					where: {
+						id: params.storeId,
+						userId,
+					},
+				});
+
+				if (!storeByUserId) {
+					return new NextResponse("Unauthorized action", { status: 403 });
+				}
+
+				const billboard = await prismadb.billboard.create({
+					data: {
+						label,
+						imageUrl,
+						imageAlt,
+						legend,
+
+						url,
+						buttonText,
+						storeId: params.storeId,
+					},
+				});
 
         return NextResponse.json(billboard);
         
